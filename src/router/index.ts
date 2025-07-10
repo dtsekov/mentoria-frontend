@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 import { useAuthStore } from '@/store/authStore';
 
 // Importar vistas
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import LoginPage from '@/pages/LoginPage.vue';
 import HomePage from '@/pages/HomePage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
@@ -15,11 +16,23 @@ const routes: Array<RouteRecordRaw> = [
     component: LoginPage,
     meta: { requiresAuth: false }
   },
-  {
+
+{
     path: '/',
-    name: 'Home',
-    component: HomePage,
-    meta: { requiresAuth: true }
+    component: DefaultLayout,
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: '',
+        name: 'Home',
+        component: HomePage
+      },
+      {
+        path: 'perfil',
+        name: 'Perfil',
+        component: () => import('@/pages/ProfilePage.vue') // placeholder futuro
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
