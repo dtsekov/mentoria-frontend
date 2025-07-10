@@ -31,15 +31,16 @@ const routes: Array<RouteRecordRaw> = [
         path: 'perfil',
         name: 'Perfil',
         component: () => import('@/pages/ProfilePage.vue') // placeholder futuro
-      }
-    ]
-  },
-  {
+      },
+        {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFoundPage,
     meta: { requiresAuth: false }
   }
+    ]
+  },
+
 ];
 
 // Crear router
