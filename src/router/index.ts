@@ -11,6 +11,8 @@ import NotificationsPage from '@/pages/NotificationsPage.vue';
 import ProfilePage from '@/pages/ProfilePage.vue';
 import MenteesPage from '@/pages/MenteesPage.vue';
 import MyMentorPage from '@/pages/MyMentorPage.vue';
+import ReportsPage from '@/pages/ReportsPage.vue';
+import ReportsCreatePage from '@/pages/ReportsCreatePage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -56,7 +58,18 @@ const routes: Array<RouteRecordRaw> = [
         path:"my-mentor",
         name:"MyMentor",
         component: MyMentorPage
-      }
+      },
+      {
+        path:"reports",
+        name:"Reports",
+        component: ReportsPage
+      },
+      {
+        path:"reports/create",
+        name:"CreateReports",
+        component: ReportsCreatePage
+      },
+      
     ]
   },
 

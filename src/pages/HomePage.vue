@@ -52,11 +52,10 @@
         <div class="list-group-item text-start">
           <h4>Contacto</h4>
           <address class="mb-0">
-            Subdirección de Estudiantes y Relaciones Internacionales<br>
-            Despacho: 6101<br>
-            Teléfono: 91 336 78 56<br>
-            Horario de atención: 10 a 14 h.<br>
-            Email: <a href="mailto:Subdireccion.extension@etsisi.upm.es">Subdireccion.extension@etsisi.upm.es</a><br>
+            Adjunta para Extensión Universitaria<br>
+            Ana Belén Cristóbal López<br>
+            Despacho: 8202<br>
+            Email: <a href="mailto:conecta.etsisi@upm.es">conecta.etsisi@upm.es</a><br>
           </address>
         </div>
         <div class="list-group-item text-start">
