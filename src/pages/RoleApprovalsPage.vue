@@ -23,7 +23,7 @@
           <p class="text-muted"><small>Enviado el {{ formatDate(solicitud.fecha_envio) }}</small></p>
 
           <div class="mt-3">
-            <button class="btn btn-success me-2" @click="aprobar(solicitud.id)">
+            <button class="btn btn-success me-2" @click="aprobar(solicitud.id, solicitud.usuario, solicitud.tipo)">
               Aprobar
             </button>
             <button class="btn btn-danger" @click="abrirModal(solicitud.id)">
@@ -66,6 +66,7 @@ import { ref, onMounted, computed} from 'vue';
 import { getSolicitudesRol, patchSolicitudRol } from '@/services/roleService';
 import { getUsuarios } from '@/services/userService';
 import type { SolicitudRol, User } from '@/types';
+import { patchUsuario } from '@/services/userService';
 
 const solicitudes = ref<SolicitudRol[]>([]);
 const usuarios = ref<User[]>([]);
@@ -105,11 +106,14 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString() + ' ' + d.toLocaleTimeString();
 }
 
-async function aprobar(id: number) {
+async function aprobar(id: number, userId: number, tipo: 'mentor' | 'mentorizado') {
   await patchSolicitudRol(id, { estado: 'aceptada' });
+  await patchUsuario(userId, { rol_actual: tipo });
+
   solicitudes.value = solicitudes.value.map(s =>
     s.id === id ? { ...s, estado: 'aceptada' } : s
   );
+
 }
 
 function abrirModal(id: number) {
