@@ -10,3 +10,8 @@ export async function patchUsuario(id: number, data: Partial<User>): Promise<Use
   const response = await api.patch<User>(`/users/${id}/`, data);
   return response.data;
 }
+
+export async function getUsuarios(): Promise<User[]> {
+  const res = await api.get<User[]>('/users/');
+  return res.data;
+}
