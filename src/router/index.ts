@@ -7,6 +7,7 @@ import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import LoginPage from '@/pages/LoginPage.vue';
 import HomePage from '@/pages/HomePage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
+import NotificationsPage from '@/pages/NotificationsPage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -37,7 +38,12 @@ const routes: Array<RouteRecordRaw> = [
     name: 'NotFound',
     component: NotFoundPage,
     meta: { requiresAuth: false }
-  }
+  },
+    {
+      path:"notifications",
+      name:"Notifications",
+      component: NotificationsPage
+    }
     ]
   },
 

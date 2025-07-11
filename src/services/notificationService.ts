@@ -17,3 +17,11 @@ export async function getUnreadCount(): Promise<number> {
   const notifications = await getNotifications();
   return notifications.filter((n) => !n.leida).length;
 }
+
+/*
+* Cambia el estado de leida a true
+*/
+export async function patchNotification(id: number, data: Partial<Notification>): Promise<Notification> {
+  const response = await api.patch<Notification>(`/notifications/${id}/`, data);
+  return response.data;
+}

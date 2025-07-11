@@ -12,68 +12,54 @@
 
     <!-- What are external practices card -->
     <div class="card card-outline-secondary mb-4">
-      <div class="card-header">
-        <h3 class="mb-0">¿Qué son las prácticas externas?</h3>
+      <div class="card-header text-start">
+        <h3 class="mb-0">¿Qué es el Programa de Mentoría?</h3>
       </div>
-      <div class="card-body">
+      <div class="card-body text-start">
         <p>
-          Los planes de estudios conducentes a la obtención de las titulaciones de Grado impartidas en la ETS de
-          Ingeniería de Sistemas Informáticos contemplan la posibilidad de adquirir formación mediante la realización de
-          Prácticas Académicas Externas en virtud de lo dispuesto en el 
-          <a href="http://www.boe.es/boe/dias/2014/07/30/pdfs/BOE-A-2014-8138.pdf" target="_blank">RD 592/2014</a>.
+          El Programa de Mentoría de la Escuela Técnica Superior de Ingeniería de Sistemas 
+          Informáticos (ETSISI) de la UPM tiene como objetivo la orientación y ayuda a 
+          estudiantes de nuevo ingreso (de primero y segundo curso, así como también 
+          estudiantes internacionales) por parte de estudiantes de cursos superiores, bajo la 
+          supervisión de los profesores coordinadores, tanto para conseguir el éxito en los 
+          estudios universitarios, como para facilitar la integración académica y social en la vida 
+          de la Escuela. 
         </p>
-        <ul>
-          <li>
-            Para que las prácticas puedan tener reconocimiento en créditos deben ser prácticas externas curriculares.
-          </li>
-          <li>
-            La asignatura de Prácticas Externas tiene asignada una carga docente en intervalos de 3 ECTS hasta
-            un máximo de 18 créditos, con una equivalencia de 1 crédito ECTS = 30 horas.
-          </li>
-          <li>
-            La Oficina de Prácticas Externas es la unidad de la ETSISI encargada de la información y gestión de
-            las mismas.
-          </li>
-        </ul>
       </div>
     </div>
 
     <!-- Requirements card -->
     <div class="card card-outline-secondary mb-4">
-      <div class="card-header">
+      <div class="card-header text-start">
         <h3 class="mb-0">Requisitos</h3>
       </div>
-      <div class="card-body">
+      <div class="card-body text-start">
         <ol>
-          <li>Haber superado el 50% de los créditos de la titulación (120 créditos).</li>
+          <li>Ser estudiante de nuevo ingreso (primer o segundo curso) o ser de Erasmus para ser mentorizado. Puedes solicitarlo rellenando la Solicitud ser Mentorizado.</li>
           <li>
-            Estar en posesión del Anexo al Convenio de Cooperación Educativa, o de Credencial de Becario, según
-            proceda.
+            Ser estudiante en los ultimos cursos (tercero o cuarto) para ser mentor. Puedes solicitarlo rellenando la Solicitud ser Mentor.
           </li>
-          <li>Matricularse, con el número de créditos acordado, en la asignatura Prácticas Externas.</li>
         </ol>
       </div>
     </div>
 
     <!-- Want to know more card -->
     <div class="card card-outline-secondary mb-4">
-      <div class="card-header">
+      <div class="card-header text-start">
         <h3 class="mb-0">¿Quieres saber más?</h3>
       </div>
       <div class="list-group list-group-flush">
-        <div class="list-group-item">
+        <div class="list-group-item text-start">
           <h4>Contacto</h4>
           <address class="mb-0">
-            Oficina de Prácticas Externas de la Escuela Técnica Superior de Ingeniería de Sistemas Informáticos<br>
-            Persona de contacto: Juana Triviño García<br>
-            Despacho: 6006<br>
+            Subdirección de Estudiantes y Relaciones Internacionales<br>
+            Despacho: 6101<br>
             Teléfono: 91 336 78 56<br>
             Horario de atención: 10 a 14 h.<br>
-            Email: <a href="mailto:practicas.externas@etsisi.upm.es">practicas.externas@etsisi.upm.es</a><br>
-            Web: <a href="http://www.etsisi.upm.es/practicasexternas" target="_blank">www.etsisi.upm.es/practicasexternas</a>
+            Email: <a href="mailto:Subdireccion.extension@etsisi.upm.es">Subdireccion.extension@etsisi.upm.es</a><br>
           </address>
         </div>
-        <div class="list-group-item">
+        <div class="list-group-item text-start">
           <h4>Preguntas frecuentes</h4>
           <p class="mb-0">Puedes revisar nuestro manual de preguntas frecuentes <a href="/faq">aquí</a>.</p>
         </div>
@@ -136,6 +122,11 @@
 .list-group-item address {
   font-style: normal;
   line-height: 1.6;
+}
+
+/* Forzar alineación a la izquierda para todo el contenido */
+.text-start {
+  text-align: left !important;
 }
 
 /* Responsive adjustments */
