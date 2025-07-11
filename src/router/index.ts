@@ -8,6 +8,7 @@ import LoginPage from '@/pages/LoginPage.vue';
 import HomePage from '@/pages/HomePage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import NotificationsPage from '@/pages/NotificationsPage.vue';
+import ProfilePage from '@/pages/ProfilePage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -29,21 +30,21 @@ const routes: Array<RouteRecordRaw> = [
         component: HomePage
       },
       {
-        path: 'perfil',
-        name: 'Perfil',
-        component: () => import('@/pages/ProfilePage.vue') // placeholder futuro
+        path: 'profile/:id?',
+        name: 'Profile',
+        component: ProfilePage 
       },
-        {
-    path: '/:pathMatch(.*)*',
-    name: 'NotFound',
-    component: NotFoundPage,
-    meta: { requiresAuth: false }
-  },
-    {
-      path:"notifications",
-      name:"Notifications",
-      component: NotificationsPage
-    }
+      {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFoundPage,
+        meta: { requiresAuth: false }
+      },
+      {
+        path:"notifications",
+        name:"Notifications",
+        component: NotificationsPage
+      }
     ]
   },
 

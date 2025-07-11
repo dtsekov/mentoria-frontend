@@ -50,7 +50,7 @@
               {{ user?.email }}
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-              <li><a class="dropdown-item" href="#" @click.prevent="goToProfile">Mi zona</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="goToProfile">Mi Perfil</a></li>
               <li><hr class="dropdown-divider" /></li>
               <li><a class="dropdown-item text-danger" href="#" @click.prevent="logout">Cerrar sesión</a></li>
             </ul>
@@ -167,7 +167,7 @@ function logout() {
 }
 
 function goToProfile() {
-  router.push('/perfil');
+  router.push('/profile');
 }
 
 function goToNotifications() {
@@ -192,8 +192,8 @@ function isActive(path: string) {
 <style scoped>
 /* Layout principal */
 .layout {
-  height: 100vh;
-  overflow: hidden;
+ /* height: 100vh;
+  overflow: hidden;*/
 }
 
 /* Navbar fixed at top - Updated height to 64px */
@@ -205,9 +205,9 @@ function isActive(path: string) {
 /* Main content below navbar - Updated for 64px navbar */
 .main-content {
   display: flex;
-  height: calc(100vh - 64px);
+  /*height: calc(100vh - 64px);*/
   margin-top: 64px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 /* SIDEBAR STYLES - Updated for 64px navbar */
