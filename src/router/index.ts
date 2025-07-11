@@ -9,6 +9,8 @@ import HomePage from '@/pages/HomePage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import NotificationsPage from '@/pages/NotificationsPage.vue';
 import ProfilePage from '@/pages/ProfilePage.vue';
+import MenteesPage from '@/pages/MenteesPage.vue';
+import MyMentorPage from '@/pages/MyMentorPage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -44,6 +46,16 @@ const routes: Array<RouteRecordRaw> = [
         path:"notifications",
         name:"Notifications",
         component: NotificationsPage
+      },
+      {
+        path:"mentees",
+        name:"Mentees",
+        component: MenteesPage
+      },
+      {
+        path:"my-mentor",
+        name:"MyMentor",
+        component: MyMentorPage
       }
     ]
   },

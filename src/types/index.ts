@@ -33,3 +33,15 @@ export interface Notification {
   created_at: string;
   updated_at: string;
 }
+
+export interface Pairing {
+  id: number;
+  mentor: number;
+  mentorizado: number;
+  year: number;
+  cuatrimestre: number;
+  fecha_emparejamiento: string;
+  comentarios: string | null;
+  created_at: string;
+  updated_at: string;
+}
