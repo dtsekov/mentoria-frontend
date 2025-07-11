@@ -143,6 +143,7 @@ const allItems: MenuItem[] = [
   { label: 'Mis Mentorizados', to: '/mentees', icon: 'fa fa-users', roles: ['mentor'] },
   { label: 'Emparejar', to: '/pairing', icon: 'fa fa-handshake', roles: ['coordinador'] },
   { label: 'Aprobaciones', to: '/approvals', icon: 'fa fa-check-circle', roles: ['coordinador'] },
+  { label: 'Aprobaciones-Rol', to: '/role-approvals', icon: 'fa fa-check-circle', roles: ['coordinador'] },
 ];
 
 const menuItems = computed(() =>

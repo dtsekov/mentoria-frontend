@@ -11,6 +11,21 @@ export interface LoginResponse {
   access: string;
 }
 
+export type SolicitudRolEstado = 'pendiente' | 'aceptada' | 'rechazada';
+export type SolicitudRolTipo = 'mentor' | 'mentorizado';
+
+export interface SolicitudRol {
+  id: number;
+  usuario: number;
+  tipo: SolicitudRolTipo;
+  fecha_envio: string;
+  contenido: string;
+  estado: SolicitudRolEstado;
+  comentario_coordinador: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface User {
   id: number;
   email: string;

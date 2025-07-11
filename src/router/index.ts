@@ -17,6 +17,8 @@ import ProgressPage from '@/pages/ProgressPage.vue';
 import ReportDetailsPage from '@/pages/ReportDetailsPage.vue';
 import PairingsPage from '@/pages/PairingsPage.vue';
 import ApprovalsPage from '@/pages/ApprovalsPage.vue';
+import RequestRolePage from '@/pages/RequestRolePage.vue';
+import RoleApprovalsPage from '@/pages/RoleApprovalsPage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -92,6 +94,16 @@ const routes: Array<RouteRecordRaw> = [
         path:"approvals",
         name:"Approvals",
         component: ApprovalsPage
+      },
+      {
+        path:"request-role",
+        name:"RequestRole",
+        component: RequestRolePage
+      },
+      {
+        path:"role-approvals",
+        name:"ApproveRole",
+        component: RoleApprovalsPage
       },
       
     ]
