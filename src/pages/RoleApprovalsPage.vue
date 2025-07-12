@@ -67,6 +67,7 @@ import { getSolicitudesRol, patchSolicitudRol } from '@/services/roleService';
 import { getUsuarios } from '@/services/userService';
 import type { SolicitudRol, User } from '@/types';
 import { patchUsuario } from '@/services/userService';
+import { postNotification } from '@/services/notificationService';
 
 const solicitudes = ref<SolicitudRol[]>([]);
 const usuarios = ref<User[]>([]);
@@ -110,6 +111,12 @@ async function aprobar(id: number, userId: number, tipo: 'mentor' | 'mentorizado
   await patchSolicitudRol(id, { estado: 'aceptada' });
   await patchUsuario(userId, { rol_actual: tipo });
 
+  await postNotification({
+    usuario: userId,
+    tipo: 'info',
+    mensaje: `Tu solicitud para ser ${tipo} ha sido aceptada.`
+  })
+
   solicitudes.value = solicitudes.value.map(s =>
     s.id === id ? { ...s, estado: 'aceptada' } : s
   );
@@ -125,10 +132,24 @@ function abrirModal(id: number) {
 
 async function confirmarRechazo() {
   if (!idRechazo.value) return;
+
+  const sol = solicitudes.value.find(s => s.id === idRechazo.value);
+  if (!sol) return;
+
   await patchSolicitudRol(idRechazo.value, {
     estado: 'rechazada',
     comentario_coordinador: comentario.value
   });
+
+   await postNotification({
+    usuario: sol.usuario,
+    tipo: 'info',
+    mensaje: `Tu solicitud para ser ${sol.tipo} ha sido rechazada.`
+  });
+
+  
+
+
   solicitudes.value = solicitudes.value.map(s =>
     s.id === idRechazo.value ? { ...s, estado: 'rechazada', comentario_coordinador: comentario.value } : s
   );

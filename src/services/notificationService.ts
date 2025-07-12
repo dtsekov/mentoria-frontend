@@ -25,3 +25,12 @@ export async function patchNotification(id: number, data: Partial<Notification>)
   const response = await api.patch<Notification>(`/notifications/${id}/`, data);
   return response.data;
 }
+
+export async function postNotification(data: {
+  usuario: number;
+  mensaje: string;
+  tipo: 'info' | 'alerta' | 'error';
+}): Promise<Notification> {
+  const response = await api.post<Notification>('/notifications/', data);
+  return response.data;
+}

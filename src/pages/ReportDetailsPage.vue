@@ -97,6 +97,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/authStore';
 import { getInformeById, patchInforme } from '@/services/reportService';
 import type { Informe } from '@/types';
+import { postNotification } from '@/services/notificationService';
 
 const route = useRoute();
 const router = useRouter();
@@ -127,11 +128,32 @@ function formatDate(s: string) {
   return new Date(s).toLocaleString();
 }
 
-async function patchEstado(nuevo: 'aprobado'|'devuelto') {
+async function patchEstado(nuevo: 'aprobado' | 'devuelto') {
   updating.value = true;
   try {
+    // 1) Actualizar el estado en el backend
     await patchInforme(id, { estado: nuevo });
-    if (inf.value) inf.value.estado = nuevo;
+    // 2) Reflejar el cambio en la UI
+    if (inf.value) {
+      inf.value.estado = nuevo;
+    }
+
+    // 3) Enviar notificación
+    const tipoLabel = inf.value!.tipo === 'final'
+      ? 'Informe Final'
+      : inf.value!.tipo === 'seguimiento1'
+        ? 'Informe de Seguimiento 1'
+        : 'Informe de Seguimiento 2';
+
+    const mensaje = `Tu ${tipoLabel} ha sido ${nuevo === 'aprobado' ? 'aprobado' : 'devuelto'}.`;
+    await postNotification({
+      usuario: inf.value!.user,
+      tipo: 'info',
+      mensaje
+    });
+
+  } catch (e) {
+    console.error('Error al actualizar o notificar:', e);
   } finally {
     updating.value = false;
   }

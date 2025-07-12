@@ -35,6 +35,12 @@ const routes: Array<RouteRecordRaw> = [
     component: PasswordResetConfirmPage,
     meta: { requiresAuth: false }
   },
+  {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFoundPage,
+        meta: { requiresAuth: false }
+  },
 
 {
     path: '/',
@@ -50,12 +56,6 @@ const routes: Array<RouteRecordRaw> = [
         path: 'profile/:id?',
         name: 'Profile',
         component: ProfilePage 
-      },
-      {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: NotFoundPage,
-        meta: { requiresAuth: false }
       },
       {
         path:"notifications",
