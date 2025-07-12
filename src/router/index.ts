@@ -19,6 +19,7 @@ import PairingsPage from '@/pages/PairingsPage.vue';
 import ApprovalsPage from '@/pages/ApprovalsPage.vue';
 import RequestRolePage from '@/pages/RequestRolePage.vue';
 import RoleApprovalsPage from '@/pages/RoleApprovalsPage.vue';
+import PasswordResetConfirmPage from '@/pages/PasswordResetConfirmPage.vue';
 
 // Definición de rutas
 const routes: Array<RouteRecordRaw> = [
@@ -26,6 +27,12 @@ const routes: Array<RouteRecordRaw> = [
     path: '/login',
     name: 'Login',
     component: LoginPage,
+    meta: { requiresAuth: false }
+  },
+   {
+    path: '/password-reset-confirm',
+    name: 'PasswordResetConfirm',
+    component: PasswordResetConfirmPage,
     meta: { requiresAuth: false }
   },
 

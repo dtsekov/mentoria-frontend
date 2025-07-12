@@ -15,3 +15,8 @@ export async function getUsuarios(): Promise<User[]> {
   const res = await api.get<User[]>('/users/');
   return res.data;
 }
+
+export async function postUsuario(userData: { email: string; password: string }): Promise<User> {
+  const response = await api.post<User>('/users/', userData);
+  return response.data;
+}
