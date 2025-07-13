@@ -150,7 +150,6 @@ router.beforeEach((to, from, next) => {
   // Si la ruta define roles y el rol del usuario no está entre ellos, redirige
   const allowedRoles = (to.meta.roles as string[]) || null;
   if (allowedRoles && !allowedRoles.includes(rol || '')) {
-    // Opcionalmente mostrar un mensaje o ir a página de "Forbidden"
     return next({ name: 'Home' });
   }
 
