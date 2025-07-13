@@ -50,67 +50,80 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: '',
         name: 'Home',
-        component: HomePage
+        component: HomePage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado", "anonimo"]} // Permite acceso a todos los roles
       },
       {
         path: 'profile/:id?',
         name: 'Profile',
-        component: ProfilePage 
+        component: ProfilePage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado", "anonimo"]} // Permite acceso a todos los roles
       },
       {
         path:"notifications",
         name:"Notifications",
-        component: NotificationsPage
+        component: NotificationsPage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado", "anonimo"]} // Permite acceso a todos los roles
       },
       {
         path:"mentees",
         name:"Mentees",
-        component: MenteesPage
+        component: MenteesPage,
+        meta: {roles: ["coordinador", "mentor"]} 
       },
       {
         path:"my-mentor",
         name:"MyMentor",
-        component: MyMentorPage
+        component: MyMentorPage,
+        meta: {roles: ["coordinador", "mentorizado"]} 
       },
       {
         path:"reports",
         name:"Reports",
-        component: ReportsPage
+        component: ReportsPage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado"]}
       },
       {
         path:"reports/create",
         name:"CreateReports",
-        component: ReportsCreatePage
+        component: ReportsCreatePage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado"]}
       },
       {
         path:"progress",
         name:"ProgressReports",
-        component: ProgressPage
+        component: ProgressPage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado"]}
       },
       {
         path:"reports/:id",
         name:"DetailReport",
-        component: ReportDetailsPage
+        component: ReportDetailsPage,
+        meta: {roles: ["coordinador", "mentor", "mentorizado"]}
       },
       {
         path:"pairing",
         name:"Pairing",
-        component: PairingsPage
+        component: PairingsPage,
+        meta: {roles: ["coordinador"]}
       },
       {
         path:"approvals",
         name:"Approvals",
-        component: ApprovalsPage
+        component: ApprovalsPage,
+        meta: {roles: ["coordinador"]}
       },
       {
         path:"request-role",
         name:"RequestRole",
-        component: RequestRolePage
+        component: RequestRolePage,
+        meta: {roles: ["coordinador", "anonimo"]}
       },
       {
         path:"role-approvals",
         name:"ApproveRole",
-        component: RoleApprovalsPage
+        component: RoleApprovalsPage,
+        meta: {roles: ["coordinador"]}
       },
       
     ]
@@ -128,16 +141,24 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
   const isLoggedIn = authStore.isAuthenticated;
+  const rol = authStore.rol;
 
-  if (to.meta.requiresAuth && !isLoggedIn) {
-    // Redirige a login si no está autenticado
-    next({ name: 'Login', query: { redirect: to.fullPath } });
-  } else if (to.name === 'Login' && isLoggedIn) {
-    // Si ya está autenticado, redirige al Home
-    next({ name: 'Home' });
-  } else {
-    next();
+    if (to.meta.requiresAuth && !isLoggedIn) {
+    return next({ name: 'Login', query: { redirect: to.fullPath } });
   }
+
+  // Si la ruta define roles y el rol del usuario no está entre ellos, redirige
+  const allowedRoles = (to.meta.roles as string[]) || null;
+  if (allowedRoles && !allowedRoles.includes(rol || '')) {
+    // Opcionalmente mostrar un mensaje o ir a página de "Forbidden"
+    return next({ name: 'Home' });
+  }
+
+  if (to.name === 'Login' && isLoggedIn) {
+    return next({ name: 'Home' });
+  }
+
+  next();
 });
 
 export default router;
