@@ -116,7 +116,9 @@ async function markAllRead() {
       marking.value[n.id] = false;
     }
   }
+  
   markingAll.value = false;
+  location.reload();
 }
 </script>
 

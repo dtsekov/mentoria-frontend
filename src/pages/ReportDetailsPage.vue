@@ -36,8 +36,8 @@
           <tr><th>Observaciones generales</th><td>{{ inf.observaciones_generales }}</td></tr>
 
           <!-- Campos de seguimiento -->
-          <tr v-if="isSeguimiento && isMentor"><th>Problemas detectados</th><td>{{ inf.problemas_detectados }}</td></tr>
-          <tr v-if="isSeguimiento && isMentor"><th>Participación</th><td>{{ inf.participacion_mentorizada }}</td></tr>
+          <tr v-if="isSeguimiento && (isMentor || isCoordinador)"><th>Problemas detectados</th><td>{{ inf.problemas_detectados }}</td></tr>
+          <tr v-if="isSeguimiento && (isMentor || isCoordinador)"><th>Participación</th><td>{{ inf.participacion_mentorizada }}</td></tr>
           <tr v-if="isSeguimiento && !isMentor"><th>Actividades realizadas</th><td>{{ inf.actividades_realizadas }}</td></tr>
           <tr v-if="isSeguimiento && !isMentor"><th>Ayuda recibida</th><td>{{ inf.ayuda_recibida }}</td></tr>
 
@@ -48,13 +48,13 @@
           <tr v-if="isFinal"><th>Mejoras finales</th><td>{{ inf.mejoras_finales }}</td></tr>
 
           <!-- Campos de informe final: mentor -->
-          <tr v-if="isFinal && isMentor"><th>Labor mentor</th><td>{{ inf.labor_mentor }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Seguimiento</th><td>{{ inf.seguimiento }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Labor positiva integración</th><td>{{ inf.labor_positiva_integracion }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Mejora implicación</th><td>{{ inf.mejora_implicacion }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Comunicación</th><td>{{ inf.comunicacion }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Organización</th><td>{{ inf.organizacion }}</td></tr>
-          <tr v-if="isFinal && isMentor"><th>Beneficio mentor</th><td>{{ inf.beneficio_mentor }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Labor mentor</th><td>{{ inf.labor_mentor }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Seguimiento</th><td>{{ inf.seguimiento }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Labor positiva integración</th><td>{{ inf.labor_positiva_integracion }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Mejora implicación</th><td>{{ inf.mejora_implicacion }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Comunicación</th><td>{{ inf.comunicacion }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Organización</th><td>{{ inf.organizacion }}</td></tr>
+          <tr v-if="isFinal && (isMentor || isCoordinador)"><th>Beneficio mentor</th><td>{{ inf.beneficio_mentor }}</td></tr>
 
           <!-- Campos de informe final: mentorizado -->
           <tr v-if="isFinal && !isMentor"><th>Labor mentorizado</th><td>{{ inf.labor_mentorizado }}</td></tr>
@@ -122,6 +122,7 @@ onMounted(async () => {
 const isFinal = computed(() => inf.value?.tipo === 'final');
 const isSeguimiento = computed(() => inf.value?.tipo === 'seguimiento1' || inf.value?.tipo === 'seguimiento2');
 const isMentor = computed(() => auth.rol === 'mentor');
+const isMentorizado = computed(() => auth.rol === 'mentorizado');
 const isCoordinador = computed(() => auth.rol === 'coordinador');
 
 function formatDate(s: string) {
